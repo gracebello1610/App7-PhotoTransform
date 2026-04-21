@@ -42,7 +42,8 @@
  <script>
   var docMod = document.lastModified; // gets last modified date and time of the index.html file
   console.log("This file last modified  " + docMod); // displays last modified date and time in the javascipt browser console 
-
+  console.log("Blue channel image successfully drawn on the second canvas.");
+  
 /* detectVerticalSquash & drawImageIOSFix = are functions that are critical due to a flaw in the iPhone camera software that squishes any photos displayed on an HTML5 canvas element. https://github.com/stomita/ios-imagefile-megapixel
 */
  function detectVerticalSquash(img) {
@@ -102,8 +103,26 @@
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
           
-          
-          
+
+         var blueCanvas = document.getElementById('blueCanvas');
+         var blueContext = blueCanvas.getContext('2d');
+
+         blueCanvas.width = canvas.width;
+         blueCanvas.height = canvas.height;
+
+         var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+         var data = imageData.data;
+
+         for (var i = 0; i < data.length; i += 4) {
+          data [i] = 0;
+          data [i + 1] = 0;
+         }
+
+         blueContext.putImageData(imageData, 0, 0);
+         console.log('Blue channel image successfully drawn on the second canvas.");
+
+         /* ++++++++ END IMAGE PROCESSING ++++++++ */
+                     
           
         } // end of img.onload
         
