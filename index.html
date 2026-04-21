@@ -116,8 +116,8 @@
           data [i] = 0;
           data [i + 1] = 0;
          }
-
          blueContext.putImageData(imageData, 0, 0);
+         
          console.log("Blue channel image successfully drawn on the second canvas.");
 
          /* ++++++++ END IMAGE PROCESSING ++++++++ */
@@ -151,17 +151,32 @@
         <input type="file" id="fileInput" STYLE="background-color: #FF6600;">
       </div>
       <div id="messageDisplayArea"></div>
+
+     <!-- First Canvas: original picture -->
       
-      <canvas id="blueCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
-        var blueCanvas = document.getElementById('blueCanvas');
-        var blueContext = blueCanvas.getContext("2d");
-        blueContext.font = '20pt Calibri';
-        blueContext.fillStyle = "blue";
-        blueContext.fillText("Blue channel image will go here", 10, 20);
+        var canvas = document.getElementById('myCanvas');
+        var context = canvas.getContext("2d");
+        context.font = '20pt Calibri';
+        context.fillStyle = "black";
+        context.fillText("Original image will go here", 10, 20);
       </script>
 
+      <!-- Second Canvas: blue channel image  -->
+
+     <canvas id="blueCanvas" width="600" height="500" style="border:1px solid #d3d3d3;"></canvas>
+  <script>
+    // This script initializes the second canvas and puts text on "blueCanvas"
+    var blueCanvas = document.getElementById('blueCanvas');
+    var blueContext = blueCanvas.getContext("2d");
+    blueContext.font = '20pt Calibri';
+    blueContext.fillStyle = "blue";
+    blueContext.fillText("Blue channel image will go here", 10, 20);
+  </script>
+     
     </div><!-- /content -->
+   
     <div data-role="footer" data-position="fixed">
       <p>DIY Diagnostics</p>
     </div><!-- /footer -->
